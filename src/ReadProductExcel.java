@@ -43,6 +43,38 @@ public class ReadProductExcel {
         return products;
     }
 
+    public Product getProductById(String id, InputStream in) {
+        try {
+            XSSFWorkbook xw = new XSSFWorkbook(in);
+            XSSFSheet xs = xw.getSheetAt(0);
+            for (int j = 1; j <= xs.getLastRowNum(); j++) {
+                XSSFRow row = xs.getRow(j);
+                Product product = new Product();//每循环一次就把电子表格的一行的数据给对象赋值
+                for (int k = 0; k <= row.getLastCellNum(); k++) {
+                    XSSFCell cell = row.getCell(k);
+                    if (cell == null)
+                        continue;
+                    if (k == 0) {
+                        product.setpId(this.getValue(cell));//给username属性赋值
+                    } else if (k == 1) {
+                        product.setpName(this.getValue(cell));//给password属性赋值
+                    } else if (k == 2) {
+                        product.setPrice(this.getValue(cell));//给address属性赋值
+                    } else if (k == 3) {
+                        product.setpDesc(this.getValue(cell));//给phone属性赋值
+                    }
+                }
+                if (id.equals(product.getpId())){
+                    return  product;
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private String getValue(XSSFCell cell) {
         String value;
         CellType type = cell.getCellTypeEnum();
