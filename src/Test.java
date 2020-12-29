@@ -11,7 +11,7 @@ public class Test {
 
         System.out.println("请输入密码：");
         String password = sc.next();
-        System.out.println("您输入的密码是：");
+        System.out.println("您输入的密码是：" + password);
 
         File file = new File("C:\\Users\\雷斌\\IdeaProjects\\ConsoleShop\\src\\users.xlsx");
         ReadExcel readExcel = new ReadExcel(); //创建对象
