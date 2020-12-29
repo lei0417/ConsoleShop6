@@ -1,6 +1,6 @@
 public class User {
     private String username;
-    private String userpassword;
+    private String password;
     private String address;
     private String phone;
 
@@ -12,12 +12,12 @@ public class User {
         this.username = username;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAddress() {
@@ -34,8 +34,5 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public void setPassword(String value) {
     }
 }
