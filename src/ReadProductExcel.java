@@ -11,7 +11,9 @@ import java.io.InputStream;
 import java.text.DecimalFormat;
 
 public class ReadProductExcel {
-    public Product[] readExcel(InputStream in) {
+
+
+    public Product[] getAllProduct(InputStream in) {
         Product products[] = null;
         try {
             XSSFWorkbook xw = new XSSFWorkbook(in);
@@ -64,8 +66,9 @@ public class ReadProductExcel {
                         product.setpDesc(this.getValue(cell));//给phone属性赋值
                     }
                 }
+                //如果输入的id与表格中的id一致，则返回该商品
                 if (id.equals(product.getpId())){
-                    return  product;
+                    return product;
                 }
             }
 
